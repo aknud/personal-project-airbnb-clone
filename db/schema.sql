@@ -7,7 +7,9 @@ CREATE TABLE Users (
     state VARCHAR(2),
     zip INTEGER,
     phone VARCHAR(24),
-    email VARCHAR(100) UNIQUE NOT NULL
+    email VARCHAR(100) UNIQUE NOT NULL,
+    auth_id TEXT,
+    user_pic TEXT
 );
 
 CREATE TABLE Properties (
