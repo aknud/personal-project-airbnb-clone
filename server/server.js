@@ -61,5 +61,18 @@ app.get('/auth/callback', async (req, res) => {
 
 });
 
+app.get('/api/user-data', (req, res) => {
+    if(req.session.user){
+        res.status(200).send(req.session.user)
+    } else {
+        res.status(401).send('Access Denied')
+    }
+});
+
+app.get('/api/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('http://localhost:3000')
+})
+
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));

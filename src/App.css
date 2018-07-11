@@ -1,12 +1,7 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.App {
-  height: 100vh;
-  width: 100%;
-  background-image: url('./images/domenico-loia-274169-unsplash.jpg');
-  background-size: cover;
-}
