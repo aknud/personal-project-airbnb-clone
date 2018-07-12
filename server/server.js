@@ -4,6 +4,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const axios = require('axios');
+const ctrl = require('./controller');
 const app = express();
 
 app.use(bodyParser.json());
@@ -51,15 +52,17 @@ app.get('/auth/callback', async (req, res) => {
     let userExists = await db.find_user([sub]);
     if (userExists[0]) {
         req.session.user = userExists[0];
-        res.redirect('http://localhost:3000/#/userdashboard');
+        res.redirect('http://localhost:3000/userdashboard');
     } else {
         db.create_user([sub, given_name, family_name, picture, email]).then(createdUser => {
             req.session.user = createdUser[0];
-            res.redirect('http://localhost:3000/#/userdashboard');
+            res.redirect('http://localhost:3000/userdashboard');
         });
     }
 
 });
+
+
 
 app.get('/api/user-data', (req, res) => {
     if(req.session.user){
@@ -71,8 +74,10 @@ app.get('/api/user-data', (req, res) => {
 
 app.get('/api/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000')
+    res.json(true);
 })
+
+app.get('/api/properties', ctrl.read)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));

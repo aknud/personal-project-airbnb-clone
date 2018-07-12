@@ -13,6 +13,6 @@ export default (
         <Route path='/newlisting' component={NewListing} />
         <Route path='/hostdashboard' component={HostDashboard} />
         <Route path='/hostdashboard/newlisting' component={NewListing} />
-        <Route path='/' component={Home} exact/>
+        <Route path='/' component={Home}/>
     </Switch>
 )

@@ -5,12 +5,24 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 
 class UserDashboard extends Component {
+    constructor(props){
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
     componentDidMount() {
         axios.get('/api/user-data').then(res => {
             this.props.getUserData(res.data)
         })
     }
-
+    logout(){
+        axios.get(`/api/logout`)
+        .then((response)=>{
+            if(response.data){
+                this.props.history.push(`/login`)
+            }
+        })
+    }
+    
     render() {
         let { user } = this.props
         return (
@@ -18,8 +30,7 @@ class UserDashboard extends Component {
                 <h4>Hello, {user.first_name ? user.first_name : null}</h4>
                 {user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
                 <Link to='/hostdashboard' ><button>Host</button></Link>
-                <a href="http://localhost:3005/api/logout">
-                    <button>Logout</button></a>
+                <button onClick={this.logout}>Logout</button>
             </div>
         )
     }

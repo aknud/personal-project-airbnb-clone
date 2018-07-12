@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.css';
 
 
 export default function Login(props){
@@ -14,7 +15,7 @@ export default function Login(props){
  return (
      <div>
          <h1>Login Page</h1>
-         <button onClick={login}>Login</button>
+         <button className="logout" onClick={login}>Login</button>
      </div>
  )   
 }

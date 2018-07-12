@@ -7,10 +7,24 @@
 nav {
     display: flex;
     justify-content: space-evenly;
-    /* background-color: ; */
     padding: 20px;
+    font-size: 1em;
+    position: fixed;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    width: 100%;
 }
 
-.logo_link {
-    text-decoration: none;
+.nav_links {
+    color: aquamarine;
+    padding-top: 10px;
 }
+
+.fa-globe-americas:before {
+    content: "\f57d";
+    font-size: 35px;
+    color: aquamarine;
+    padding-right: 140px;
+
+}
+
+@media()

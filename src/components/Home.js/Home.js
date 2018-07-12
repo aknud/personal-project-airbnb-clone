@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
+import Listings from '../Listings/Listings';
 
 
 class Home extends Component {
@@ -32,6 +33,9 @@ class Home extends Component {
               value={this.state.search} />
             <button onClick={() => this.clearState()}>Search</button>
           </div>
+        </div>
+        <div>
+          <Listings/>
         </div>
       </div>
     );
