@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getUserData } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import './UserDashboard.css';
 
 class UserDashboard extends Component {
     constructor(props){
@@ -26,7 +27,7 @@ class UserDashboard extends Component {
     render() {
         let { user } = this.props
         return (
-            <div>
+            <div className="user_profile">
                 <h4>Hello, {user.first_name ? user.first_name : null}</h4>
                 {user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
                 <Link to='/hostdashboard' ><button>Host</button></Link>

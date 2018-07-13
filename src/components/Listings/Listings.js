@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getListings } from './../../ducks/reducer';
+import { MapContainer } from '../MapContainer/MapContainer';
 
  export class Listings extends React.Component {
 
@@ -27,7 +28,9 @@ import { getListings } from './../../ducks/reducer';
             <div>
                 <h1>Listings</h1>
                 <div>{properties}</div>
-                
+                <div className="map_container">
+                <MapContainer />
+                </div>
             </div>
         )
     }
