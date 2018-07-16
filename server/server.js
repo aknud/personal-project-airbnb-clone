@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const mid = require('./middleware')
 const massive = require('massive');
 const axios = require('axios');
 const ctrl = require('./controller');
@@ -28,6 +29,8 @@ massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('Database reporting for duty');
 }); 
+
+app.use(mid.bypassAuthInDevelopment)
 
 app.get('/auth/callback', async (req, res) => {
     //code from auth0 on req.query.code 
@@ -80,8 +83,8 @@ app.get('/api/logout', (req, res) => {
 app.get('/api/properties', ctrl.getAllListings)
 app.get('/api/my-properties', ctrl.getHostListings)
 app.post('/api/new-property', ctrl.create)
-app.put(`/api/update-properties`, ctrl.update)
-app.delete(`/api/delete-properties`, ctrl.delete)
+app.put(`/api/update-property`, ctrl.update)
+app.delete(`/api/delete-property/:id`, ctrl.delete)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { getUserData } from './../../ducks/reducer';
+import { getUserData, getHostListings, updateListing} from './../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getHostListings } from './../../ducks/reducer';
 import './HostDashboard.css'
 
 class HostDashboard extends Component {
@@ -31,6 +30,12 @@ class HostDashboard extends Component {
             })
     }
 
+    deleteListing = (id) => {
+        axios.delete(`/api/delete-property/${id}`).then(res => {
+            this.props.updateListing(res.data)
+        })
+    }
+
 
 
     render() {
@@ -40,10 +45,11 @@ class HostDashboard extends Component {
         }).map(property => {
             return (
                 <div key={property.property_id} >
-                    <img src={property.img} alt="" />
+                    <img src={property.img} alt="property" />
                     <h4>{property.city}</h4>
                     <h4>{property.state}</h4>
                     <h4>{property.rent}</h4>
+                    <button onClick={() => this.deleteListing(property.property_id)}>delete</button>
                 </div>
             )
         })
@@ -69,4 +75,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getUserData, getHostListings })(HostDashboard);
+export default connect(mapStateToProps, { getUserData, getHostListings, updateListing })(HostDashboard);

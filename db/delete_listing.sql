@@ -1,3 +1,4 @@
 
 DELETE FROM Properties 
-WHERE id = $1;
+WHERE property_id = $1;
+select * from Properties;

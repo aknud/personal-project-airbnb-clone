@@ -2,8 +2,10 @@ module.exports = {
     create: (req, res) => {
         const dbi = req.app.get('db');
         const { address, city, state, zip, img, rent, title } = req.body
-        dbi.add_listing([ req.session.user.user_id, title, address, city, state, zip, img, rent])
-            .then(listing => res.status(200).send(listing))
+        dbi.create_listing([ req.session.user.user_id, title, address, city, state, zip, img, rent])
+            .then(listing => {
+                res.status(200).send(listing)
+            })
             .catch(err => {
                 res.status(500).send({ errorMessage: 'This is why we cant have nice things.' })
                 console.log(err)
@@ -38,9 +40,9 @@ module.exports = {
     },
     delete: (req, res) => {
         const dbi = req.app.get('db');
-        const { id } = req.session.user.user_id;
+        const { id } = req.params;
         dbi.delete_listing(id)
-            .then(() => res.sendStatus(200))
+            .then((listings) => res.send(listings))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'This is why we cant have nice things.' })
                 console.log(err)
