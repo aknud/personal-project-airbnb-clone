@@ -7,24 +7,28 @@ import { getHostListings } from './../../ducks/reducer';
 import './HostDashboard.css'
 
 class HostDashboard extends Component {
-    
-    componentDidMount() {
-        axios.get('/api/user-data').then(res => {
-            this.props.getUserData(res.data)
-        })
-        axios.get('/api/my-properties').then(res => {
-            this.props.getHostListings(res.data)
-            console.log(33333, this.props.listings)
 
-        })
+    componentDidMount() {
+        if (!this.props.user.user_id) {
+            axios.get('/api/user-data').then(res => {
+                this.props.getUserData(res.data)
+            })
+        }
+        if (this.props.listings.length === 0) {
+            axios.get('/api/my-properties').then(res => {
+                this.props.getHostListings(res.data)
+                console.log(33333, this.props.listings)
+            })
+        }
     }
+    
     logout = () => {
         axios.get(`/api/logout`)
-        .then((response)=>{
-            if(response.data){
-                this.props.history.push(`/login`)
-            }
-        })
+            .then((response) => {
+                if (response.data) {
+                    this.props.history.push(`/login`)
+                }
+            })
     }
 
 

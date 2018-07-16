@@ -1,8 +1,8 @@
 module.exports = {
     create: (req, res) => {
         const dbi = req.app.get('db');
-        const { address, city, state, zip, img, rent } = req.body
-        dbi.add_listing([address, city, state, zip, img, rent, req.session.user.user_id])
+        const { address, city, state, zip, img, rent, title } = req.body
+        dbi.add_listing([ req.session.user.user_id, title, address, city, state, zip, img, rent])
             .then(listing => res.status(200).send(listing))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'This is why we cant have nice things.' })
@@ -28,8 +28,8 @@ module.exports = {
     update: (req, res) => {
         const dbi = req.app.get('db');
         const { id } = req.session.user.user_id;
-        const { address, city, state, zip, img, rent } = req.body;
-        dbi.update_listing([id, address, city, state, zip, img, rent])
+        const { address, city, state, zip, img, rent, title } = req.body;
+        dbi.update_listing([id, address, city, state, zip, img, rent, title])
             .then(() => res.sendStatus(200))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'This is why we cant have nice things.' })

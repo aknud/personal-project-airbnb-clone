@@ -20,7 +20,8 @@ CREATE TABLE Properties (
     zip INTEGER,
     img TEXT,
     rent DECIMAL,
-    user_id INTEGER REFERENCES Users (user_id)
+    user_id INTEGER REFERENCES Users (user_id),
+    title VARCHAR(40)
 );
 
 
