@@ -7,6 +7,7 @@ import { getHostListings } from './../../ducks/reducer';
 import './HostDashboard.css'
 
 class HostDashboard extends Component {
+    
     componentDidMount() {
         axios.get('/api/user-data').then(res => {
             this.props.getUserData(res.data)
@@ -17,15 +18,19 @@ class HostDashboard extends Component {
 
         })
     }
-    logout() {
+    logout = () => {
         axios.get(`/api/logout`)
+        .then((response)=>{
+            if(response.data){
+                this.props.history.push(`/login`)
+            }
+        })
     }
 
 
 
     render() {
         let { user, listings } = this.props;
-        console.log(6666, this.props.listings);
         let userListings = listings.filter(listing => {
             return (listing.user_id);
         }).map(property => {
@@ -44,7 +49,7 @@ class HostDashboard extends Component {
                 {user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
                 <h2>Your Listings</h2>
                 <div>{userListings}</div>
-                <Link to='/hostdashboard/newlisting'>
+                <Link to='/newlisting'>
                     <button>Add New Listing</button>
                 </Link>
                 <button onClick={this.logout}>Logout</button>

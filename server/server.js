@@ -79,6 +79,9 @@ app.get('/api/logout', (req, res) => {
 
 app.get('/api/properties', ctrl.getAllListings)
 app.get('/api/my-properties', ctrl.getHostListings)
+app.post('/api/new-property', ctrl.create)
+app.put(`/api/update-properties`, ctrl.update)
+app.delete(`/api/delete-properties`, ctrl.delete)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));
