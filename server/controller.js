@@ -29,10 +29,11 @@ module.exports = {
     },
     update: (req, res) => {
         const dbi = req.app.get('db');
-        const { id } = req.session.user.user_id;
+        const { id } = req.params;
+        const {user_id} = req.session.user; 
         const { address, city, state, zip, img, rent, title } = req.body;
-        dbi.update_listing([id, address, city, state, zip, img, rent, title])
-            .then(() => res.sendStatus(200))
+        dbi.update_listing([id, user_id, address, city, state, zip, img, rent, title])
+            .then((listings) => res.send(listings))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'This is why we cant have nice things.' })
                 console.log(err)

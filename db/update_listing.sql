@@ -1,10 +1,11 @@
 UPDATE Properties
-SET address = $2,
-    city = $3,
-    state = $4,
-    zip = $5,
-    img = $6,
-    rent = $7,
-    title = $8
+SET address = $3,
+    city = $4,
+    state = $5,
+    zip = $6,
+    img = $7,
+    rent = $8,
+    title = $9
 
-WHERE user_id = $1;
+WHERE property_id = $1 AND user_id = $2;
+SELECT * FROM Properties;

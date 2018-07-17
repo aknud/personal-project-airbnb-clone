@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 
 const imposter = {
     user_id: 1,
@@ -31,7 +31,7 @@ const imposter2 = {
 
 module.exports = {
     bypassAuthInDevelopment: (req, res, next) => {
-        if(!req.session.user && process.env.NODE_ENV === 'development') {
+        if(!req.session.user && process.env.MODE === 'development') {
             req.session.user = imposter
         }
         next()

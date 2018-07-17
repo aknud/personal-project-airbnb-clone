@@ -38,6 +38,7 @@ class HostDashboard extends Component {
 
 
 
+
     render() {
         let { user, listings } = this.props;
         let userListings = listings.filter(listing => {
@@ -45,11 +46,13 @@ class HostDashboard extends Component {
         }).map(property => {
             return (
                 <div key={property.property_id} >
-                    <img src={property.img} alt="property" />
+                    <img className="prop_img" src={property.img} alt="property" />
                     <h4>{property.city}</h4>
                     <h4>{property.state}</h4>
                     <h4>{property.rent}</h4>
                     <button onClick={() => this.deleteListing(property.property_id)}>delete</button>
+                    <Link to={`/hostdashboard/editlisting/${property.property_id}`} ><button>edit</button></Link>
+                    
                 </div>
             )
         })

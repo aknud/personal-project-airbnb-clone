@@ -83,7 +83,7 @@ app.get('/api/logout', (req, res) => {
 app.get('/api/properties', ctrl.getAllListings)
 app.get('/api/my-properties', ctrl.getHostListings)
 app.post('/api/new-property', ctrl.create)
-app.put(`/api/update-property`, ctrl.update)
+app.put(`/api/update-property/:id`, ctrl.update)
 app.delete(`/api/delete-property/:id`, ctrl.delete)
 
 
