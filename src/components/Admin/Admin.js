@@ -25,7 +25,8 @@ class Admin extends Component {
                         <h4>{user.email}</h4>
                         <h4>Listing Title: {user.title}</h4>
                         <img src={user.img} alt="listing" />
-                        <h4>Listing Address: {user.address} {user.city} {user.state}</h4>
+                        <h4>Listing Address: {user.address} {user.city}, {user.state} {user.zip}</h4>
+                        <h4>Listing ID: {user.property_id}</h4>
                     </div>
                 )
             })

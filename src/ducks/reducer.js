@@ -2,7 +2,8 @@ const initalState = {
     user: {},
     listings: [],
     hostListings: [],
-    allUserData: []
+    allUserData: [],
+    search: ''
 }
 
 const USER_DATA = 'USER_DATA';
@@ -10,6 +11,7 @@ const ALL_USER_DATA = 'ALL_USER_DATA';
 const GET_LISTINGS = 'GET_LISTINGS';
 const GET_HOST_LISTINGS = 'GET_HOST_LISTINGS';
 const UPDATE_LISTING = 'UPDATE_LISTING';
+const SEARCH_LISTINGS = 'SEARCH_LISTINGS';
 
 export default function reducer(state = initalState, action) {
     switch (action.type) {
@@ -25,6 +27,10 @@ export default function reducer(state = initalState, action) {
             const newListings = action.payload
             const hostListings = newListings.filter( listing => listing.user_id === state.user.user_id)
             return Object.assign({}, state, { listings: newListings, hostListings: hostListings })
+        case SEARCH_LISTINGS:
+            // const searchCriteria = action.payload; 
+            // const results = listings.filter(listing => listing.state === searchCriteria || listing.city === searchCriteria)
+            return Object.assign({}, state, { search: action.payload })
         default: return state;
     }
 }
@@ -62,5 +68,12 @@ export const updateListing = (listings) => {
     return {
         type: UPDATE_LISTING,
         payload: listings
+    }
+}
+
+export const searchListings = (search) => {
+    return {
+        type: SEARCH_LISTINGS,
+        payload: search
     }
 }
