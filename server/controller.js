@@ -27,6 +27,14 @@ module.exports = {
                 console.log(err)
             })
     },
+    getAllUserData: (req, res) => {
+        const dbi = req.app.get('db');
+        dbi.get_all_user_data().then(userData => res.status(200).send(userData))
+        .catch(err => {
+            res.status(500).send({ errorMessage: `Something went wrong.` })
+            console.log(err)
+        })
+    },
     update: (req, res) => {
         const dbi = req.app.get('db');
         const { id } = req.params;

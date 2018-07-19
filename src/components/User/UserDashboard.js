@@ -32,6 +32,7 @@ class UserDashboard extends Component {
                 {user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
                 <Link to='/hostdashboard' ><button>Host</button></Link>
                 <button onClick={this.logout}>Logout</button>
+                <h3>Upcoming trips</h3>
             </div>
         )
     }

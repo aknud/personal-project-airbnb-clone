@@ -47,6 +47,7 @@ class HostDashboard extends Component {
             return (
                 <div key={property.property_id} >
                     <img className="prop_img" src={property.img} alt="property" />
+                    <h4>{property.title}</h4>
                     <h4>{property.city}</h4>
                     <h4>{property.state}</h4>
                     <h4>{property.rent}</h4>
@@ -60,12 +61,13 @@ class HostDashboard extends Component {
             <div className="host_profile">
                 <h1>Host Dashboard</h1> <h4>Hello, {user.first_name ? user.first_name : null}</h4>
                 {user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
-                <h2>Your Listings</h2>
-                <div>{userListings}</div>
                 <Link to='/newlisting'>
                     <button>Add New Listing</button>
                 </Link>
+                <Link to='/userdashboard' ><button>Back to my trips</button></Link>
                 <button onClick={this.logout}>Logout</button>
+                <h2>Your Listings</h2>
+                <div>{userListings}</div>
 
             </div>
         )

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Mogra');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather Sans', sans-serif;
+    text-decoration: none;
+  }
+
+.listing_container {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-gap: 30px;
+    padding: 100px;
+  }
+
+.property_container {
+    height: 250px;
+    width: 250px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: space-around;
+}
+
+.listings_main {
+    text-align: center;
+    margin-top: 300px;
+}
+
+.listings_main h1 {
+    color: aquamarine;
+}

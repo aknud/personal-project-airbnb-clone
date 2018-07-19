@@ -6,6 +6,7 @@ import NewListing from './components/NewListings/NewListing';
 import HostDashboard from './components/Host/HostDashboard';
 import Home from './components/Home.js/Home';
 import EditListing from './components/Host/EditListing';
+import Admin from './components/Admin/Admin';
 
 export default (
     <Switch>
@@ -15,6 +16,7 @@ export default (
         <Route path='/hostdashboard/newlisting' component={NewListing} />
         <Route path='/hostdashboard' component={HostDashboard} />
         <Route path='/newlisting' component={NewListing} />
+        <Route path='/admin' component={Admin} />
         <Route path='/' component={Home}/>
     </Switch>
 )

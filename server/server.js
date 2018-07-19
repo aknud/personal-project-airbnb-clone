@@ -6,6 +6,7 @@ const mid = require('./middleware')
 const massive = require('massive');
 const axios = require('axios');
 const ctrl = require('./controller');
+const aws = require('aws-sdk')
 const app = express();
 
 app.use(bodyParser.json());
@@ -30,7 +31,14 @@ massive(CONNECTION_STRING).then(db => {
     console.log('Database reporting for duty');
 }); 
 
+
 app.use(mid.bypassAuthInDevelopment)
+
+aws.config.region = 'us-west-1';
+
+
+
+
 
 app.get('/auth/callback', async (req, res) => {
     //code from auth0 on req.query.code 
@@ -81,6 +89,7 @@ app.get('/api/logout', (req, res) => {
 })
 
 app.get('/api/properties', ctrl.getAllListings)
+app.get('/api/all-user-data', ctrl.getAllUserData)
 app.get('/api/my-properties', ctrl.getHostListings)
 app.post('/api/new-property', ctrl.create)
 app.put(`/api/update-property/:id`, ctrl.update)

@@ -16,6 +16,7 @@ export default function Login(props){
      <div>
          <h1>Login Page</h1>
          <button className="logout" onClick={login}>Login</button>
+         <button className="logout" onClick={login}>Sign Up</button>
      </div>
  )   
 }

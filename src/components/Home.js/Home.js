@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import Listings from '../Listings/Listings';
+import { MapContainer } from '../MapContainer/MapContainer';
 
 
 class Home extends Component {
@@ -34,8 +35,11 @@ class Home extends Component {
             <button onClick={() => this.clearState()}>Search</button>
           </div>
         </div>
-        <div>
-          <Listings/>
+        <div className="display_listings">
+          <Listings />
+        </div>
+        <div className="map_container">
+          <MapContainer />
         </div>
       </div>
     );
