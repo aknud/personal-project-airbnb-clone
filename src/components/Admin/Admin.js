@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUserData } from './../../ducks/reducer';
+import { getAllUserData } from '../../ducks/reducer';
 import axios from 'axios';
 import './Admin.css'
 

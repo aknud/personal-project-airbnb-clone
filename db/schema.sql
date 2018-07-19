@@ -16,7 +16,7 @@ CREATE TABLE Properties (
     property_id serial PRIMARY KEY,
     address VARCHAR(100),
     city VARCHAR(80),
-    state VARCHAR(2),
+    state VARCHAR(20),
     zip INTEGER,
     img TEXT,
     rent DECIMAL,

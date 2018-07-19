@@ -29,12 +29,13 @@
   align-items: center;
 }
 
-.display_listings {
+.home_display_listings {
   display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: flex-start;
-	align-content: space-around;
+  align-content: space-around;
+  margin-top: 250px;
 }
 

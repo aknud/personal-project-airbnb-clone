@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { getUserData } from './../../ducks/reducer';
+import { getUserData } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import './UserDashboard.css';

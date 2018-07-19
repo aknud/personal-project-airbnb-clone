@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './Home.css';
 import Listings from '../Listings/Listings';
-import { MapContainer } from '../MapContainer/MapContainer';
+import { Link } from 'react-router-dom';
+// import { MapContainer } from '../MapContainer/MapContainer';
 import { connect } from 'react-redux';
-import {searchListings} from './../../ducks/reducer';
+import {searchListings} from '../../ducks/reducer';
 
 
 class Home extends Component {
@@ -13,40 +14,32 @@ class Home extends Component {
   //     search: e.target.val
   //   })
   // }
-  // clearState = () => {
-  //   this.setState({
-  //     search: ''
-  //   })
-  // }
+  clearState = () => {
+    this.setState({
+      search: ''
+    })
+  }
 
   render() {
-    let {listings, search} = this.props;
-    let results = listings.filter(listing => listing.state === search || listing.city === search)
-    console.log(2222, results)
     return (
       <div className="Home">
         <div className="container">
           <h1>Stay like a local.</h1>
           <div className="search_bar">
             <input type="text" onChange={e => this.props.searchListings(e.target.value)}/>
-            <button onClick={() => this.clearState()}>Search</button>
+            <Link to='/searchresults'><button>Search</button></Link>
           </div>
         </div>
-        <div className="display_listings">
+        <div className="home_display_listings">
           <Listings />
         </div>
-        <div className="map_container">
+        {/* <div className="map_container">
           <MapContainer />
-        </div>
+        </div> */}
       </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    listings: state.listings,
-    search: state.search
-  }
-}
 
-export default connect(mapStateToProps, {searchListings})(Home);
+
+export default connect(null, {searchListings})(Home);

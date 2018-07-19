@@ -11,13 +11,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
-let {
+const {
     SERVER_PORT,
     CONNECTION_STRING,
     REACT_APP_DOMAIN,
     REACT_APP_CLIENT_ID,
     CLIENT_SECRET,
-    SESSION_SECRET
+    SESSION_SECRET,
+    S3_BUCKET
 } = process.env;
 
 app.use(session({
@@ -34,12 +35,40 @@ massive(CONNECTION_STRING).then(db => {
 
 app.use(mid.bypassAuthInDevelopment)
 
+
+////////// AMAZON S3 ///////////
 aws.config.region = 'us-west-1';
 
+app.get('/sign-s3', (req, res) => {
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+  
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if(err){
+        console.log(err);
+        return res.end();
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      };
+      res.write(JSON.stringify(returnData));
+      res.end();
+    });
+  });
 
 
 
 
+/////////////////// AUTH0 /////////////////////
 app.get('/auth/callback', async (req, res) => {
     //code from auth0 on req.query.code 
     let payload = {

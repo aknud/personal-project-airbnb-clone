@@ -28,8 +28,6 @@ export default function reducer(state = initalState, action) {
             const hostListings = newListings.filter( listing => listing.user_id === state.user.user_id)
             return Object.assign({}, state, { listings: newListings, hostListings: hostListings })
         case SEARCH_LISTINGS:
-            // const searchCriteria = action.payload; 
-            // const results = listings.filter(listing => listing.state === searchCriteria || listing.city === searchCriteria)
             return Object.assign({}, state, { search: action.payload })
         default: return state;
     }
