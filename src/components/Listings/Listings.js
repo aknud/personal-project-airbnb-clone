@@ -23,7 +23,7 @@ export class Listings extends React.Component {
 					<h4>{property.city}</h4>
 					<h4>{property.state}</h4>
 					<h4>{property.rent}</h4>
-					<Link to={`selectedlisting/${property.property_id}`}><button>View Listing</button></Link>
+					<Link to={`/selectedlisting/${property.property_id}`}><button>View Listing</button></Link>
 				</div>
 			);
 		});

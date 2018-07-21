@@ -56,5 +56,12 @@ module.exports = {
                 res.status(500).send({ errorMessage: 'This is why we cant have nice things.' })
                 console.log(err)
             })
+    },
+    checkForLogin: (req, res) => {
+        if(req.session.user){
+            res.status(200).send(req.session.user)
+        } else {
+            res.redirect('http://localhost:3000/login')
+        }
     }
 }

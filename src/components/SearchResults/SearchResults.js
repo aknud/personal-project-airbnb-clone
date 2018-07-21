@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 export class SearchResults extends React.Component {
-
     render(){
         let { listings, search } = this.props;
 		let lowerCaseSearch = search.toLowerCase();
@@ -14,6 +14,7 @@ export class SearchResults extends React.Component {
 					<h4>{property.city}</h4>
 					<h4>{property.state}</h4>
 					<h4>{property.rent}</h4>
+					<Link to={`/selectedlisting/${property.property_id}`}><button>View Listing</button></Link>
 				</div>
             );
         });

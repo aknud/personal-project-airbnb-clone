@@ -36,6 +36,7 @@ class HostDashboard extends Component {
 
 	render() {
 		let { user, listings } = this.props;
+		console.log(222, user)
 		let userListings = listings
 			.filter((listing) => {
 				return listing.user_id;

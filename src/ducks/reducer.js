@@ -1,5 +1,6 @@
 const initalState = {
     user: {},
+    host_id: [],
     listings: [],
     hostListings: [],
     allUserData: [],
@@ -7,6 +8,7 @@ const initalState = {
 }
 
 const USER_DATA = 'USER_DATA';
+const HOST_DATA = 'HOST_DATA';
 const ALL_USER_DATA = 'ALL_USER_DATA';
 const GET_LISTINGS = 'GET_LISTINGS';
 const GET_HOST_LISTINGS = 'GET_HOST_LISTINGS';
@@ -17,6 +19,8 @@ export default function reducer(state = initalState, action) {
     switch (action.type) {
         case USER_DATA:
             return Object.assign({}, state, { user: action.payload })
+        case HOST_DATA:
+            return Object.assign({}, state, { host_id: action.payload })
         case ALL_USER_DATA:
             return Object.assign({}, state, { allUserData: action.payload })
         case GET_LISTINGS:
@@ -37,6 +41,12 @@ export const getUserData = (user) => {
     return {
         type: USER_DATA,
         payload: user
+    }
+}
+export const getHostData = (host_id) => {
+    return {
+        type: HOST_DATA,
+        payload: host_id
     }
 }
 

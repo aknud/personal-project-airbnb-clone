@@ -123,6 +123,7 @@ app.get('/api/my-properties', ctrl.getHostListings)
 app.post('/api/new-property', ctrl.create)
 app.put(`/api/update-property/:id`, ctrl.update)
 app.delete(`/api/delete-property/:id`, ctrl.delete)
+app.get('/api/checkloginstatus', ctrl.checkForLogin)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));
