@@ -1,14 +1,14 @@
-.logout {
-    margin-top: 15px;
+.login_main {
+    padding-top: 62px;
+    text-align: center;
+}
+.login {
+    margin-top: 35px;
     width: 175px;
     height: 40px;
     border-radius: 25px;
     background: white;
     font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
   
   

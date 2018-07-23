@@ -8,18 +8,6 @@ import {searchListings} from '../../ducks/reducer';
 
 
 class Home extends Component {
-  
-  // searchHandler = (e) => {
-  //   this.setState({
-  //     search: e.target.val
-  //   })
-  // }
-  clearState = () => {
-    this.setState({
-      search: ''
-    })
-  }
-
   render() {
     return (
       <div className="Home">

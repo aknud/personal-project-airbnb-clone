@@ -9,7 +9,7 @@
 
 .listing_container {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(1, 200px);
     grid-gap: 30px;
     padding: 40px;
   }
@@ -29,7 +29,7 @@
 
 .listings_main {
     text-align: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 
 .listings_main h1 {
