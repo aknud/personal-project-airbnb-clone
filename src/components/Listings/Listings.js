@@ -15,10 +15,12 @@ export class Listings extends React.Component {
 
 	render() {
 		let { listings } = this.props;
+		
 		let properties = listings.map((property) => {
+			console.log(333222, property.url)
 			return (
 				<div key={property.property_id} className="listing_property_container">
-					<img style={{ height: '200px', width: '200px' }} src={property.img} alt="property" />
+					<img style={{ height: '200px', width: '200px' }} src={property.url || property.url} alt="property" />
 					<h4>{property.title}</h4>
 					<h4>{property.city}</h4>
 					<h4>{property.state}</h4>

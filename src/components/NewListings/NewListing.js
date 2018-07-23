@@ -4,7 +4,7 @@ import axios from 'axios';
 import { updateListing } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
-import { GridLoader} from 'react-spinners';
+import { GridLoader } from 'react-spinners';
 
 class NewListing extends Component {
 	constructor() {
@@ -17,7 +17,8 @@ class NewListing extends Component {
 			zip: '',
 			img: '',
 			rent: '',
-			isUploading: false
+			isUploading: false,
+			url: ''
 		};
 	}
 	//////// S3 //////////////
@@ -63,8 +64,8 @@ class NewListing extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { title, address, city, state, zip, img, rent } = this.state;
-		let payload = { title, address, city, state, zip, img, rent };
+		const { title, address, city, state, zip, url, rent } = this.state;
+		let payload = { title, address, city, state, zip, url, rent };
 		axios
 			.post('/api/new-property', payload)
 			.then((res) => {
@@ -176,13 +177,13 @@ class NewListing extends Component {
 							placeholder="zip"
 							name="zip"
 						/>
-						<input
+						{/* <input
 							type="text"
 							value={this.state.img}
 							onChange={this.handleChange}
 							placeholder="img"
 							name="img"
-						/>
+						/> */}
 						<input
 							type="text"
 							value={this.state.rent}
@@ -190,31 +191,32 @@ class NewListing extends Component {
 							placeholder="rent"
 							name="rent"
 						/>
+						<div className="dropzone">
+							<Dropzone
+								onDropAccepted={this.addFile}
+								style={{
+									position: 'relative',
+									width: 200,
+									height: 200,
+									borderWidth: 7,
+									borderColor: 'rgb(102, 102, 102)',
+									borderStyle: 'dashed',
+									borderRadius: 5,
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									fontSize: 28
+								}}
+								accept="image/*"
+								multiple={false}
+							>
+								{this.state.isUploading ? <GridLoader /> : <p>Drop File or Click Here</p>}
+							</Dropzone>
+						</div>
 
 						<button type="submit">Submit</button>
 					</form>
-					<div className="dropzone">
-						<Dropzone
-							onDropAccepted={this.addFile}
-							style={{
-								position: 'relative',
-								width: 200,
-								height: 200,
-								borderWidth: 7,
-								borderColor: 'rgb(102, 102, 102)',
-								borderStyle: 'dashed',
-								borderRadius: 5,
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								fontSize: 28
-							}}
-							accept="image/*"
-							multiple={false}
-						>
-							{this.state.isUploading ? <GridLoader /> : <p>Drop File or Click Here</p>}
-						</Dropzone>
-					</div>
+
 					<Link to="/hostdashboard">
 						<button>Cancel</button>
 					</Link>

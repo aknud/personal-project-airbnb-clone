@@ -38,14 +38,16 @@ class HostDashboard extends Component {
 		let { user, listings } = this.props;
 		console.log(222, user)
 		let userListings = listings
-			.filter((listing) => {
-				return listing.user_id;
-			})
-			.map((property) => {
-				return (
+		.filter((listing) => {
+			return listing.user_id;
+		})
+		.map((property) => {
+			console.log(333222, property.url)
+			return (
 					<div className="host_listing" key={property.property_id}>
 						<h3>{property.title}</h3>
-						<img className="prop_img" src={property.img} alt="property" />
+						<img className="prop_img" src={property.img || property.url} alt="property" />
+
 						<h5>{property.city}</h5>
 						<h5>{property.state}</h5>
 						<h5>{property.rent}</h5>

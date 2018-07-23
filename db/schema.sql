@@ -24,6 +24,12 @@ CREATE TABLE Properties (
     title VARCHAR(40)
 );
 
+CREATE TABLE Photos (
+    photo_id serial PRIMARY KEY,
+    property_id INTEGER REFERENCES Properties (property_id),
+    url text
+);
+
 
 -- seed data for Properties TABLE
 -- insert into Properties (address, city, state, zip, img, rent, user_id) values ('9 Helena Lane', 'Sioux Falls', 'SD', '57188', 'http://dummyimage.com/201x199.jpg/5fa2dd/ffffff', 90, 1);
