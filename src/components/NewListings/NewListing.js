@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import Nav from './../Nav/Nav';
 import { updateListing } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
@@ -85,13 +86,12 @@ class NewListing extends Component {
 		const { user } = this.props;
 		return (
 			<div>
-				<h4>CREATE A NEW LISTING</h4>
+				<Nav {...this.props} />
+				<h4 style={{ paddingTop: '100px' }}>CREATE A NEW LISTING</h4>
 				<div className="host_profile">
 					<h4>Hello, {user.first_name ? user.first_name : null}</h4>
-					{user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
-					<button onClick={this.logout}>Logout</button>
 				</div>
-				<div style={{ paddingTop: '500px' }}>
+				<div>
 					<form onSubmit={this.handleSubmit}>
 						<input
 							type="text"

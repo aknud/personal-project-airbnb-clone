@@ -8,7 +8,7 @@ import './Listings.css';
 export class Listings extends React.Component {
 	componentDidMount = () => {
 		axios
-			.get(`/api/properties`)
+			.get(`/api/all-properties`)
 			.then((response) => this.props.getListings(response.data))
 			.catch((error) => console.log('Oi! Somethings gone wrong!', error));
 	};
@@ -19,8 +19,8 @@ export class Listings extends React.Component {
 		let properties = listings.map((property) => {
 			console.log(333222, property.url)
 			return (
-				<div key={property.property_id} className="listing_property_container">
-					<img style={{ height: '200px', width: '200px' }} src={property.url || property.url} alt="property" />
+				<div key={property.property_id + ' ' + Math.random()} className="listing_property_container">
+					<img style={{ height: '200px', width: '200px' }} src={property.img} alt="property" />
 					<h4>{property.title}</h4>
 					<h4>{property.city}</h4>
 					<h4>{property.state}</h4>

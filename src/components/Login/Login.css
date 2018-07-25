@@ -1,7 +1,11 @@
 .login_main {
-    padding-top: 62px;
     text-align: center;
 }
+
+.login_main h1 {
+    padding-top: 62px;
+}
+
 .login {
     margin-top: 35px;
     width: 175px;

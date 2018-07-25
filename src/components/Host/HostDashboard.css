@@ -5,25 +5,21 @@
 }
 
 .host_profile {
-    padding-top: 70px;
+    padding-top: 100px;
     padding-left: 20px;
-}
-
-.host_profile img {
-    border-radius: 50px;
 }
 
 .host_listings_render {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 30px;
-    padding-top: 100px;
+    padding-top: 35px;
     text-align: center;
 }
 
 .host_listing {
     border: 3px solid grey;
-    height: 450px;
+    height: 367px;
     padding: 20px;
     margin: 20px;
 }

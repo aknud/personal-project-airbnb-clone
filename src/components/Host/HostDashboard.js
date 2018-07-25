@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Nav from './../Nav/Nav';
 import axios from 'axios';
 import { getUserData, getHostListings, updateListing } from '../../ducks/reducer';
 import './HostDashboard.css';
@@ -15,18 +16,9 @@ class HostDashboard extends Component {
 		if (this.props.listings.length === 0) {
 			axios.get('/api/my-properties').then((res) => {
 				this.props.getHostListings(res.data);
-				console.log(33333, this.props.listings);
 			});
 		}
 	}
-
-	logout = () => {
-		axios.get(`/api/logout`).then((response) => {
-			if (response.data) {
-				this.props.history.push(`/login`);
-			}
-		});
-	};
 
 	deleteListing = (id) => {
 		axios.delete(`/api/delete-property/${id}`).then((res) => {
@@ -36,15 +28,13 @@ class HostDashboard extends Component {
 
 	render() {
 		let { user, listings } = this.props;
-		console.log(222, user)
 		let userListings = listings
 		.filter((listing) => {
 			return listing.user_id;
 		})
 		.map((property) => {
-			console.log(333222, property.url)
 			return (
-					<div className="host_listing" key={property.property_id}>
+					<div className="host_listing" key={property.property_id + ' ' + Math.random()}>
 						<h3>{property.title}</h3>
 						<img className="prop_img" src={property.img || property.url} alt="property" />
 
@@ -60,16 +50,12 @@ class HostDashboard extends Component {
 			});
 		return (
 			<div className="host_main">
+			<Nav {...this.props}/>
 				<div className="host_profile">
 					<h1>Host Dashboard</h1> <h4>Hello, {user.first_name ? user.first_name : null}</h4>
-					{user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
-					<Link to="/newlisting">
-						<button>Add New Listing</button>
-					</Link>
-					<Link to="/userdashboard">
-						<button>Back to my trips</button>
-					</Link>
-					<button onClick={this.logout}>Logout</button>
+					
+					
+					
 				</div>
 				<div className="host_listings_render">
 					<h2>Your Listings</h2>

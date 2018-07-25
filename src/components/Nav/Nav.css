@@ -3,27 +3,63 @@
     padding: 0;
     box-sizing: border-box;
 }
+a {
+    color: aquamarine;
+}
 
-nav {
+.nav_main {
     display: flex;
-    /* justify-content: space-between; */
-    padding: 20px;
-    font-size: 1.2em;
+    padding: 19px;
+    /* font-size: 1.2em; */
     position: fixed;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     width: 100%;
 }
-
+.nav_user_pic {
+    margin-right: 2px;
+}
+.nav_user_pic img {
+    border-radius: 35px;
+    height: 47px;
+    width: 47px;
+}
 .nav_links {
     color: aquamarine;
-    padding: 10px;
-    width: 33%;
+    white-space: nowrap;
+    padding: 10px 0px 0px 6px;
+    width: 75px;
+    word-spacing: -2.5px;
+    font-size: 1.2rem;
+}
+#signup{
+    padding: 7px 0px 0px 125px;
+}
+#login{
+    padding: 7px 0px 0px 95px;
+}
+#nav_user_logout {
+    margin: 0 27px 0 0px
+}
+#nav_user_host {
+    margin: 0 10px 0 35px;
+}
+#nav_newListing {
+    padding: 13px 0px 0px 6px;
+    font-size: 1rem;
+}
+#nav_userdash {
+    padding: 13px 0px 0px 30px;
+    font-size: 1rem;
+}
+#nav_host_logout {
+    cursor: pointer;
+    padding: 13px 0px 0px 6px;
+    font-size: 1rem;
+}
+.nav_logo_link {
+    padding-right: 5px;
 }
 
-.logo_link {
-    margin: 2px;
-    padding-right: 100px;
-}
 .fa-globe-americas:before {
     content: "\f57d";
     font-size: 35px;

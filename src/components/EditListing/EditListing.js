@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { getUserData, getHostListings, updateListing } from '../../ducks/reducer';
+import Nav from './../Nav/Nav';
+import EditPhotos from './EditPhotos';
+import { getUserData, getHostListings, updateListing } from './../../ducks/reducer';
 
 class EditListing extends Component {
 	constructor(props) {
@@ -16,8 +18,9 @@ class EditListing extends Component {
 			city: list[0] ? list[0].city : '',
 			state: list[0] ? list[0].state : '',
 			zip: list[0] ? list[0].zip : '',
-			img: list[0] ? list[0].img : '',
-			rent: list[0] ? list[0].rent : ''
+			// img: list[0] ? list[0].img : '',
+			rent: list[0] ? list[0].rent : '',
+			url: []
 		};
 	}
 
@@ -33,7 +36,7 @@ class EditListing extends Component {
 				let list = this.props.listings.filter((property) => {
 					return property.property_id === +this.props.match.params.id;
 				});
-				const { title, address, city, state, zip, img, rent } = list[0];
+				const { title, address, city, state, zip, img,url, rent } = list[0];
 				this.setState({
 					title,
 					address,
@@ -41,6 +44,7 @@ class EditListing extends Component {
 					state,
 					zip,
 					img,
+					url,
 					rent
 				});
 			});
@@ -49,9 +53,9 @@ class EditListing extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { address, city, state, zip, img, rent, title } = this.state;
+		const { address, city, state, zip, url, rent, title } = this.state;
 		const property_id = this.props.match.params.id;
-		let payload = { address, city, state, zip, img, rent, title };
+		let payload = { address, city, state, zip, url, rent, title };
 		axios
 			.put(`/api/update-property/${property_id}`, payload)
 			.then((res) => {
@@ -67,12 +71,18 @@ class EditListing extends Component {
 		});
 	};
 
+	getUrl = (url) => {
+		this.setState({
+			url
+		})
+	}
+
 	render() {
 		let { user } = this.props;
 		return (
-			<div style={{ paddingTop: '500px' }}>
-				<div>
-					<h1>Host Dashboard</h1>
+			<div className="EditListing_main">
+			<Nav {...this.props}/>
+				<div style={{paddingTop: "100px"}}>
 					<h4>Hello, {user.first_name ? user.first_name : null}</h4>
 					{user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
 				</div>
@@ -108,13 +118,13 @@ class EditListing extends Component {
 							placeholder="zip"
 							name="zip"
 						/>
-						<input
+						{/* <input
 							type="text"
 							value={this.state.img}
 							onChange={this.handleChange}
 							placeholder="img"
 							name="img"
-						/>
+						/> */}
 						<input
 							type="text"
 							value={this.state.rent}
@@ -122,6 +132,7 @@ class EditListing extends Component {
 							placeholder="rent"
 							name="rent"
 						/>
+						<EditPhotos getUrl={this.getUrl}/>
 						<button type="submit">Submit</button>
 						<Link to="/hostdashboard">
 							<button>Cancel</button>
