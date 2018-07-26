@@ -42,7 +42,7 @@ class Admin extends Component {
     }
 const mapStateToProps = (state) => {
     return {
-        userData: state.allUserData
+        userData: state.all_user_data
     }
 }
 

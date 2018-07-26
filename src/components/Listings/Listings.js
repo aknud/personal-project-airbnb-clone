@@ -8,7 +8,7 @@ import './Listings.css';
 export class Listings extends React.Component {
 	componentDidMount = () => {
 		axios
-			.get(`/api/all-properties`)
+			.get(`/api/properties`)
 			.then((response) => this.props.getListings(response.data))
 			.catch((error) => console.log('Oi! Somethings gone wrong!', error));
 	};

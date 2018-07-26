@@ -66,7 +66,7 @@ class NewListing extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const { title, address, city, state, zip, url, rent } = this.state;
-		let payload = { title, address, city, state, zip, url, rent };
+		let payload = { title, address, city, state, zip, rent, url };
 		axios
 			.post('/api/new-property', payload)
 			.then((res) => {

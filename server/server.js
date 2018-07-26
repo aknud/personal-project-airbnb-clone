@@ -60,7 +60,6 @@ app.get('/sign-s3', (req, res) => {
         signedRequest: data,
         url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
       };
-      console.log(212121, returnData)
       res.write(JSON.stringify(returnData));
       res.end();
     });
@@ -119,14 +118,17 @@ app.get('/api/logout', (req, res) => {
 })
 
 app.get('/api/properties', ctrl.getAllListings)
-app.get('/api/all-properties', ctrl.getListings)
 app.get('/api/all-user-data', ctrl.getAllUserData)
 app.get('/api/my-properties', ctrl.getHostListings)
-app.get('/api/all-photos/:id', ctrl.getPhotos)
+app.get('/api/photos-by-id/:id', ctrl.getPhotosById)
+app.get('/api/all-photos', ctrl.getPhotos)
+app.get('/api/checkloginstatus', ctrl.checkForLogin)
 app.post('/api/new-property', ctrl.create)
+app.post('/api/saved-listing/:id', ctrl.savedListing)
+app.post('/api/addphoto/:id', ctrl.addPhoto)
 app.put(`/api/update-property/:id`, ctrl.update)
 app.delete(`/api/delete-property/:id`, ctrl.delete)
-app.get('/api/checkloginstatus', ctrl.checkForLogin)
+app.delete(`/api/delete-photo/:id`, ctrl.deletePhoto)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));

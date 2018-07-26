@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Nav from './../Nav/Nav';
 import EditPhotos from './EditPhotos';
-import { getUserData, getHostListings, updateListing } from './../../ducks/reducer';
+import { getUserData, updatePhotos, getHostListings, updateListing } from './../../ducks/reducer';
 
 class EditListing extends Component {
 	constructor(props) {
@@ -53,9 +53,9 @@ class EditListing extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { address, city, state, zip, url, rent, title } = this.state;
+		const { address, city, state, zip, rent, title } = this.state;
 		const property_id = this.props.match.params.id;
-		let payload = { address, city, state, zip, url, rent, title };
+		let payload = { address, city, state, zip, rent, title };
 		axios
 			.put(`/api/update-property/${property_id}`, payload)
 			.then((res) => {
@@ -72,8 +72,13 @@ class EditListing extends Component {
 	};
 
 	getUrl = (url) => {
-		this.setState({
-			url
+		const param = this.props.match.params.id
+		axios.post(`/api/addphoto/${param}`, {url})
+		.then( photos => {
+			this.props.updatePhotos(photos.data)
+		})
+		.catch( err => {
+			console.log(err)
 		})
 	}
 
@@ -132,7 +137,7 @@ class EditListing extends Component {
 							placeholder="rent"
 							name="rent"
 						/>
-						<EditPhotos getUrl={this.getUrl}/>
+						<EditPhotos getUrl={this.getUrl} id={+this.props.match.params.id}/>
 						<button type="submit">Submit</button>
 						<Link to="/hostdashboard">
 							<button>Cancel</button>
@@ -146,8 +151,8 @@ class EditListing extends Component {
 const mapStateToProps = (state) => {
 	return {
 		user: state.user,
-		listings: state.hostListings
+		listings: state.host_listings
 	};
 };
 
-export default connect(mapStateToProps, { getUserData, getHostListings, updateListing })(EditListing);
+export default connect(mapStateToProps, { getUserData, getHostListings, updateListing, updatePhotos })(EditListing);

@@ -30,6 +30,11 @@ CREATE TABLE Photos (
     url text
 );
 
+CREATE TABLE savedListing (
+    saved_id serial primary key,
+    user_id integer,
+    property_id integer REFERENCES Properties on delete cascade 
+);
 
 -- seed data for Properties TABLE
 -- insert into Properties (address, city, state, zip, img, rent, user_id) values ('9 Helena Lane', 'Sioux Falls', 'SD', '57188', 'http://dummyimage.com/201x199.jpg/5fa2dd/ffffff', 90, 1);

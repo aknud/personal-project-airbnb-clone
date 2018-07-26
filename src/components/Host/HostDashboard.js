@@ -36,7 +36,7 @@ class HostDashboard extends Component {
 			return (
 					<div className="host_listing" key={property.property_id + ' ' + Math.random()}>
 						<h3>{property.title}</h3>
-						<img className="prop_img" src={property.img || property.url} alt="property" />
+						<img className="prop_img" src={property.img} alt={property.title} />
 
 						<h5>{property.city}</h5>
 						<h5>{property.state}</h5>
@@ -53,9 +53,6 @@ class HostDashboard extends Component {
 			<Nav {...this.props}/>
 				<div className="host_profile">
 					<h1>Host Dashboard</h1> <h4>Hello, {user.first_name ? user.first_name : null}</h4>
-					
-					
-					
 				</div>
 				<div className="host_listings_render">
 					<h2>Your Listings</h2>
@@ -68,7 +65,8 @@ class HostDashboard extends Component {
 const mapStateToProps = (state) => {
 	return {
 		user: state.user,
-		listings: state.hostListings
+		listings: state.host_listings,
+		
 	};
 };
 
