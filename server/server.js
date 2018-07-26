@@ -23,7 +23,8 @@ const {
     CLIENT_SECRET,
     SESSION_SECRET,
     S3_BUCKET,
-    FRONTEND_DOMAIN
+    FRONTEND_DOMAIN,
+    PROTOCAL
 } = process.env;
 
 app.use(session({
@@ -81,7 +82,7 @@ app.get('/auth/callback', async (req, res) => {
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://${req.headers.host}/auth/callback`
+        redirect_uri: `${PROTOCAL}${req.headers.host}/auth/callback`
     };
 
     //post request to exchange the code for token
