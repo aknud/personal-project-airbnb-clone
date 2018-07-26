@@ -6,8 +6,12 @@ const mid = require('./middleware')
 const massive = require('massive');
 const axios = require('axios');
 const ctrl = require('./controller');
-const aws = require('aws-sdk')
+const aws = require('aws-sdk');
+const path = require('path'); // Usually moved to the start of file
+
 const app = express();
+
+app.use(express.static(__dirname+'/../build'));
 
 app.use(bodyParser.json());
 
@@ -131,5 +135,10 @@ app.put(`/api/update-property/:id`, ctrl.update)
 app.delete(`/api/delete-property/:id`, ctrl.delete)
 app.delete(`/api/delete-photo/:id`, ctrl.deletePhoto)
 
+
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(SERVER_PORT, () => console.log(`Listening in on ${SERVER_PORT}`));
