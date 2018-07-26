@@ -31,7 +31,7 @@ const imposter2 = {
 
 module.exports = {
     bypassAuthInDevelopment: (req, res, next) => {
-        if(!req.session.user && process.env.MODE === 'development') {
+        if(!req.session.user && process.env.NODE_ENV === 'development') {
             req.session.user = imposter
         }
         next()

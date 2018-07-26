@@ -72,7 +72,7 @@ app.get('/sign-s3', (req, res) => {
 
 
 
-
+  http://localstay.us:3018/userdashboard#http://localstay.us:3018/userdashboard#
 /////////////////// AUTH0 /////////////////////
 app.get('/auth/callback', async (req, res) => {
     //code from auth0 on req.query.code 
