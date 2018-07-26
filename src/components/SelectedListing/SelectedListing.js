@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getHostData, savedListings } from './../../ducks/reducer';
 import './SelectedListing.css';
@@ -12,7 +12,9 @@ export class SelectedListing extends React.Component {
 			photos: []
 		};
 	}
-
+	componentDidMount(){
+		
+	}
 	loginUser(id) {
 		axios.get('/api/checkloginstatus').then(() => {
 			this.props.getHostData(id);
@@ -62,11 +64,12 @@ export class SelectedListing extends React.Component {
 			});
 		let pictures = this.state.photos.map((photo) => {
 			return (
-				<div style={{ width: '200px', height: '200px' }} className="photo" key={photo.photo_id + Math.random()}>
+				<div style={{ width: '200px', height: '200px' }} className="photo" key={photo.photo_id}>
 					<img src={photo.url} alt="" />
 				</div>
 			);
 		});
+		console.log(999, pictures)
 		return (
 			<div className="selectedListing_main">
 				{selectedListing}
@@ -78,7 +81,7 @@ export class SelectedListing extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		listings: state.listings,
-		photos: state.photos,
+		// pics: state.photos,
 		user: state.user
 	};
 };

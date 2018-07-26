@@ -18,7 +18,8 @@ const {
     REACT_APP_CLIENT_ID,
     CLIENT_SECRET,
     SESSION_SECRET,
-    S3_BUCKET
+    S3_BUCKET,
+    FRONTEND_DOMAIN
 } = process.env;
 
 app.use(session({
@@ -92,11 +93,11 @@ app.get('/auth/callback', async (req, res) => {
     let userExists = await db.find_user([sub]);
     if (userExists[0]) {
         req.session.user = userExists[0];
-        res.redirect('http://localhost:3000/userdashboard');
+        res.redirect(`${FRONTEND_DOMAIN}/userdashboard`);
     } else {
         db.create_user([sub, given_name, family_name, picture, email]).then(createdUser => {
             req.session.user = createdUser[0];
-            res.redirect('http://localhost:3000/userdashboard');
+            res.redirect(`${FRONTEND_DOMAIN}/userdashboard`);
         });
     }
 

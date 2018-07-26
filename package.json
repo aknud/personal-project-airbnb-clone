@@ -2,7 +2,14 @@
   "name": "amy-pp",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3018",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3018"
+    },
+    "/auth":{
+      "target": "http://localhost:3018"
+    }
+  },
   "main": "./server/server.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",

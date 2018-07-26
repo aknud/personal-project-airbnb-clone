@@ -123,7 +123,7 @@ module.exports = {
 		if (req.session.user) {
 			res.status(200).send(req.session.user);
 		} else {
-			res.redirect('http://localhost:3000/login');
+			res.redirect(`${process.env.FRONTEND_DOMAIN}/login`);
 		}
 	}
 };
