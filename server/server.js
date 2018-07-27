@@ -73,7 +73,7 @@ app.get('/sign-s3', (req, res) => {
 
 
 
-  http://localstay.us:3018/userdashboard#http://localstay.us:3018/userdashboard#
+
 /////////////////// AUTH0 /////////////////////
 app.get('/auth/callback', async (req, res) => {
     //code from auth0 on req.query.code 
@@ -128,7 +128,7 @@ app.get('/api/all-user-data', ctrl.getAllUserData)
 app.get('/api/my-properties', ctrl.getHostListings)
 app.get('/api/photos-by-id/:id', ctrl.getPhotosById)
 app.get('/api/all-photos', ctrl.getPhotos)
-app.get('/api/checkloginstatus', ctrl.checkForLogin)
+// app.get('/api/checkloginstatus', ctrl.checkForLogin)
 app.post('/api/new-property', ctrl.create)
 app.post('/api/saved-listing/:id', ctrl.savedListing)
 app.post('/api/addphoto/:id', ctrl.addPhoto)

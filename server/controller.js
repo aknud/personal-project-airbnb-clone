@@ -18,12 +18,14 @@ module.exports = {
 	},
 	savedListing: (req, res) => {
 		const dbi = req.app.get('db');
-		const {id: property_id} = req.params;
-		dbi.add_saved_listing([req.session.user.user_id, +property_id]).then((listing) => res.status(200).send(listing))
-		.catch((err) => {
-			res.status(500).send({ errorMessage: 'This is why we cant have nice things.' });
-			console.log(err);
-		});
+		const { id: property_id } = req.params;
+		dbi
+			.add_saved_listing([ req.session.user.user_id, +property_id ])
+			.then((listingInfo) => res.status(200).send(listingInfo))
+			.catch((err) => {
+				res.status(500).send({ errorMessage: 'This is why we cant have nice things.' });
+				console.log(err);
+			});
 	},
 	getAllListings: (req, res) => {
 		const dbi = req.app.get('db');
@@ -118,12 +120,12 @@ module.exports = {
 				res.status(500).send({ errorMessage: 'This is why we cant have nice things.' });
 				console.log(err);
 			});
-	},
-	checkForLogin: (req, res) => {
-		if (req.session.user) {
-			res.status(200).send(req.session.user);
-		} else {
-			res.redirect(`${process.env.FRONTEND_DOMAIN}/login`);
-		}
 	}
+	// checkForLogin: (req, res) => {
+	// 	if (req.session.user) {
+	// 		res.status(200).send(req.session.user);
+	// 	} else {
+	// 		res.redirect(`${process.env.FRONTEND_DOMAIN}/login`);
+	// 	}
+	// }
 };
