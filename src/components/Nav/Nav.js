@@ -6,7 +6,7 @@ import { getUserData } from './../../ducks/reducer';
 import './Nav.css';
 
 export class Nav extends React.Component {
-	
+
 	componentDidMount() {
 		axios.get('/api/user-data').then((res) => {
 			this.props.getUserData(res.data);
@@ -68,7 +68,7 @@ export class Nav extends React.Component {
 							Log out
 						</div>
 						<div className="nav_user_pic">
-							{user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
+							{user.user_pic ? <img className="avatar" src={user.url || user.user_pic} alt="user" /> : null}
 						</div>
 					</div>
 				);
@@ -110,7 +110,7 @@ export class Nav extends React.Component {
 							Log out
 						</div>
 						<div className="nav_user_pic">
-							{user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
+							{user.user_pic ? <img className="avatar" src={user.user_pic|| user.url} alt="user" /> : null}
 						</div>
 					</div>
 				);

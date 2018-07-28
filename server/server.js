@@ -36,7 +36,7 @@ app.use(session({
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('Database reporting for duty');
-}); 
+});
 
 
 app.use(mid.bypassAuthInDevelopment)
@@ -56,7 +56,7 @@ app.get('/sign-s3', (req, res) => {
       ContentType: fileType,
       ACL: 'public-read'
     };
-  
+
     s3.getSignedUrl('putObject', s3Params, (err, data) => {
       if(err){
         console.log(err);
@@ -76,7 +76,7 @@ app.get('/sign-s3', (req, res) => {
 
 /////////////////// AUTH0 /////////////////////
 app.get('/auth/callback', async (req, res) => {
-    //code from auth0 on req.query.code 
+    //code from auth0 on req.query.code
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
@@ -94,11 +94,14 @@ app.get('/auth/callback', async (req, res) => {
     const db = req.app.get('db');
     let { sub, given_name, family_name, picture, email } = userData.data;
     console.log(userData.data);
-    //gets the unique google id 
+    //gets the unique google id
     let userExists = await db.find_user([sub]);
     if (userExists[0]) {
-        req.session.user = userExists[0];
-        res.redirect(`${FRONTEND_DOMAIN}/userdashboard`);
+        const userId = userExists[0].user_id
+        db.update_user_photo([picture, userId]).then( user => {
+            req.session.user = user[0];
+            res.redirect(`${FRONTEND_DOMAIN}/userdashboard`);
+        })
     } else {
         db.create_user([sub, given_name, family_name, picture, email]).then(createdUser => {
             req.session.user = createdUser[0];
@@ -107,6 +110,16 @@ app.get('/auth/callback', async (req, res) => {
     }
 
 });
+
+// "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10216629239983013&height=50&width=50&ext=1535315025&hash=AeStC6jb17EWIGSS"
+
+// "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10216629239983013&height=50&width=50&ext=1535314990&hash=AeQW32G2jZ_PhO8e"
+
+// user_pic:"https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10216629239983013&height=50&width=50&ext=1535315025&hash=AeStC6jb17EWIGSS"
+
+
+
+
 
 
 
@@ -128,9 +141,10 @@ app.get('/api/all-user-data', ctrl.getAllUserData)
 app.get('/api/my-properties', ctrl.getHostListings)
 app.get('/api/photos-by-id/:id', ctrl.getPhotosById)
 app.get('/api/all-photos', ctrl.getPhotos)
+app.get('/api/get-saved-listings', ctrl.getSavedListings)
 // app.get('/api/checkloginstatus', ctrl.checkForLogin)
 app.post('/api/new-property', ctrl.create)
-app.post('/api/saved-listing/:id', ctrl.savedListing)
+app.post('/api/save-listing/:id', ctrl.saveListing)
 app.post('/api/addphoto/:id', ctrl.addPhoto)
 app.put(`/api/update-property/:id`, ctrl.update)
 app.delete(`/api/delete-property/:id`, ctrl.delete)

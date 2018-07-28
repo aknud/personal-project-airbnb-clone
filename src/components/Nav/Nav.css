@@ -66,4 +66,69 @@ a {
     color: aquamarine;
 }
 
-/* @media() */
+@media (min-width: 425px){
+    nav_links {
+        padding: 10px 0px 0px 25px;
+    }
+    #nav_user_logout {
+        margin: 0 5px 0 0px
+    }
+    #nav_user_host {
+        margin: 0 10px 0 90px;
+    }
+    .nav_user_pic {
+        margin-left: 65px;
+    }
+    #nav_newListing {
+        padding: 13px 0px 0px 15px;
+        font-size: 1.1rem;
+    }
+    #nav_userdash {
+        padding: 13px 0px 0px 62px;
+        font-size: 1.1rem;
+    }
+    #nav_host_logout {
+        cursor: pointer;
+        padding: 13px 0px 0px 55px;
+        font-size: 1.1rem;
+    }
+    .fa-globe-americas:before {
+        content: "\f57d";
+        font-size: 40px;
+    }
+    #login {
+        font-size: 1.2rem;
+    }
+    #signup {
+        margin-left: 70px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #login {
+        margin-left: 10px;
+        font-size: 1.4rem;
+    }
+    #signup {
+        margin-left: 385px;
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 1024px){
+    #signup {
+        margin-left: 650px;
+        font-size: 1.4rem;
+    }
+}
+@media (min-width: 1440px){
+    #signup {
+        margin-left: 1075px;
+    }
+}
+@media (min-width: 1640px){
+    #signup {
+        margin-left: 1500px;
+    }
+}

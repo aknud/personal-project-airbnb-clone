@@ -6,4 +6,30 @@
 
 .user_profile {
     padding-top: 70px;
+    border: 2px solid black;
+    background-color: rgb(226, 226, 226);
+}
+.user_profile h4 {
+    padding-left: 10px;
+}
+.user_saved_listings {
+    border: 2px solid black;
+    background-color: rgb(226, 226, 226);
+    width: 350px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+.user_saved_listings img {
+    width: 325px;
+    height: 200px;
+}
+
+@media (min-width: 425px){
+    .user_saved_listings {
+        margin: 15px 38px;
+    }
+    .user_profile h4 {
+        padding-left: 40px;
+    }
 }

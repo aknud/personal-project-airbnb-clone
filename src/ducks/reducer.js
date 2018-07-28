@@ -43,8 +43,7 @@ export default function reducer(state = initalState, action) {
         case SEARCH_LISTINGS:
             return Object.assign({}, state, { search: action.payload })
         case SAVED_LISTINGS:
-            console.log('reducer',action.payload)
-            console.log('saved_listings',action.payload)
+            console.log('saved_listings on reducer',action.payload)
             return Object.assign({}, state, { saved_listings: action.payload })
         default: return state;
     }

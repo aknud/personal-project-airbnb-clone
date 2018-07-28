@@ -32,8 +32,9 @@ CREATE TABLE Photos (
 
 CREATE TABLE savedListing (
     saved_id serial primary key,
+    host_id integer REFERENCES Users (user_id),
     user_id integer,
-    property_id integer REFERENCES Properties on delete cascade 
+    property_id integer REFERENCES Properties on delete cascade
 );
 
 -- seed data for Properties TABLE

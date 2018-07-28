@@ -16,16 +16,24 @@ module.exports = {
 				console.log(err);
 			});
 	},
-	savedListing: (req, res) => {
+	saveListing: (req, res) => {
 		const dbi = req.app.get('db');
 		const { id: property_id } = req.params;
+		const {host_id} = req.body;
 		dbi
-			.add_saved_listing([ req.session.user.user_id, +property_id ])
+			.add_saved_listing([ +host_id, +req.session.user.user_id, +property_id ])
 			.then((listingInfo) => res.status(200).send(listingInfo))
 			.catch((err) => {
 				res.status(500).send({ errorMessage: 'This is why we cant have nice things.' });
 				console.log(err);
 			});
+	},
+	getSavedListings: (req, res) => {
+		const dbi = req.app.get('db');
+		dbi.get_saved_listings().then((listings) => res.status(200).send(listings)).catch((err) => {
+			res.status(500).send({ errorMessage: `Something is broken.` });
+			console.log(err);
+		});
 	},
 	getAllListings: (req, res) => {
 		const dbi = req.app.get('db');
