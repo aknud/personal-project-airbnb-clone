@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.userDashboard {
+    background-color: #dce8d3;
+}
 .user_profile {
     padding-top: 70px;
     border: 2px solid black;

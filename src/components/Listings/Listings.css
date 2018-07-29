@@ -38,7 +38,7 @@
 }
 
 .listings_main h1 {
-    color: aquamarine;
+    color: #75dbcd;
 }
 
 @media (min-width: 425px){
@@ -46,6 +46,14 @@
         display: grid;
         grid-template-columns: repeat(1, 200px);
         grid-gap: 30px;
+        padding: 65px;
+      }
+}
+@media (min-width: 768px){
+    .listing_container {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        grid-gap: 148px;
         padding: 65px;
       }
 }

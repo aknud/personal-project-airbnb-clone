@@ -7,14 +7,8 @@ import './SelectedListing.css';
 
 export class SelectedListing extends React.Component {
 	// TODO:
-	// FIXME:
+	// FIXME:photos are not rendering
 	// NOTE: remember dlog
-	constructor() {
-		super();
-		this.state = {
-			photos: []
-		};
-	}
 	componentDidMount() {
 		if (this.props.pics.length === 0) {
 			axios.get(`/api/all-photos`).then((res) => {
@@ -27,20 +21,7 @@ export class SelectedListing extends React.Component {
 			});
 		}
 	}
-	// loginUser(id) {
-	// 	axios.get('/api/checkloginstatus').then(() => {
-	// 		this.props.getHostData(id);
-	// 		this.props.history.push(`/contacthost/${id}`);
-	// 	});
-	// }
 
-	getListingPhotos = (id) => {
-		axios.get(`/api/photos-by-id/${id}`).then((res) => {
-			this.setState({
-				photos: res.data
-			});
-		});
-	};
 	saveListing = (property_id, host_id) => {
 		axios.post(`/api/save-listing/${property_id}`, { host_id }).then((res) => {
 			this.props.savedListings(res.data);
@@ -48,14 +29,11 @@ export class SelectedListing extends React.Component {
 	};
 
 	render() {
-		console.log('photos belonging to this listing:', this.state.photos);
-		console.log('listings from state', this.props.listings);
-		const { listings, user } = this.props;
+		const { listings, user, pics } = this.props;
+		const id = this.props.match.params.id;
 		let selectedListing = listings
-			.filter((listing) => listing.property_id === +this.props.match.params.id)
+			.filter((listing) => listing.property_id === +id)
 			.map((property) => {
-				console.log('property going to reducer', property);
-				console.log('user data', user);
 				return (
 					<div key={property.property_id + Math.random()} className="selectedListing_container">
 						<img src={property.img} alt={property.title} />
@@ -63,12 +41,11 @@ export class SelectedListing extends React.Component {
 						<h4>{property.city}</h4>
 						<h4>{property.state}</h4>
 						<h4>${property.rent} per night</h4>
-						<button onClick={() => this.getListingPhotos(property.property_id)}>View Photos</button>
 						<Link to="/">
 							<button>Back to Listings</button>
 						</Link>
-						{this.props.user.user_id && <button>Contact Host</button>}
-						{this.props.user.user_id && (
+						{user.user_id && <button>Contact Host</button>}
+						{user.user_id && (
 							<Link to="/userdashboard">
 								<button onClick={() => this.saveListing(property.property_id, property.user_id)}>
 									Add to My List
@@ -78,18 +55,19 @@ export class SelectedListing extends React.Component {
 					</div>
 				);
 			});
-		let pictures = this.state.photos.map((photo) => {
-			return (
-				<div className="SL_photo" key={photo.photo_id}>
-					<img src={photo.url} alt="" />
+			let listingPhotos = pics.filter(photo => photo.property_id === +id).map(photo => {
+				return (
+				<div key={photo.photo_id} className="SL_photo">
+				 <img src={photo.url} alt=""/>
 				</div>
-			);
-		});
-		console.log(999, pictures);
+				)
+			})
 		return (
 			<div className="selectedListing_main">
 				{selectedListing}
-				{pictures}
+				<h3>Photos</h3>
+				<div className="photo_div">
+				{listingPhotos}</div>
 			</div>
 		);
 	}

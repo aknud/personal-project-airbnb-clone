@@ -45,7 +45,7 @@ class UserDashboard extends Component {
 			);
 		});
 		return (
-			<div>
+			<div className="userDashboard">
 				<Nav {...this.props} />
 				<div className="user_profile">
 					<h4>Hello, {user.first_name ? user.first_name : null}</h4>

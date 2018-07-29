@@ -4,13 +4,12 @@
     box-sizing: border-box;
 }
 a {
-    color: aquamarine;
+    color: #75dbcd;
 }
 
 .nav_main {
     display: flex;
     padding: 19px;
-    /* font-size: 1.2em; */
     position: fixed;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     width: 100%;
@@ -24,7 +23,7 @@ a {
     width: 47px;
 }
 .nav_links {
-    color: aquamarine;
+    color: #75dbcd;
     white-space: nowrap;
     padding: 10px 0px 0px 6px;
     width: 75px;
@@ -63,7 +62,7 @@ a {
 .fa-globe-americas:before {
     content: "\f57d";
     font-size: 35px;
-    color: aquamarine;
+    color: #75dbcd;
 }
 
 @media (min-width: 425px){
@@ -129,6 +128,6 @@ a {
 }
 @media (min-width: 1640px){
     #signup {
-        margin-left: 1500px;
+        margin-left: 1320px;
     }
 }

@@ -46,6 +46,7 @@ app.use(mid.bypassAuthInDevelopment)
 aws.config.region = 'us-west-1';
 
 app.get('/sign-s3', (req, res) => {
+    console.log('test')
     const s3 = new aws.S3();
     const fileName = req.query['file-name'];
     const fileType = req.query['file-type'];
