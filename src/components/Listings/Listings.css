@@ -6,24 +6,32 @@
     font-family: 'Merriweather', serif;
     text-decoration: none;
   }
+.listings_main {
+    text-align: center;
+    background-color: #F4F8F2;
+}
+
+.listings_main h1 {
+    color: #75dbcd;
+    padding: 40px 0 20px 0;
+}
 
 .listing_container {
     display: grid;
-    grid-template-columns: repeat(1, 200px);
-    grid-gap: 30px;
-    padding: 42px;
-  }
+    /* grid-template-columns: repeat(1, 90%); */
+    margin: auto;
+}
 
 .listing_property_container {
-    height: 250px;
-    width: 250px;
-    padding: 33px;
-    margin: 20px;
-    display: flex;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    align-content: space-around;
+    align-content: space-around; */
 
 }
 
@@ -32,28 +40,14 @@
     width: 325px;
 }
 
-.listings_main {
-    text-align: center;
-    /* margin-top: 50px; */
-}
-
-.listings_main h1 {
-    color: #75dbcd;
-}
-
 @media (min-width: 425px){
     .listing_container {
-        display: grid;
-        grid-template-columns: repeat(1, 200px);
-        grid-gap: 30px;
-        padding: 65px;
+        grid-template-columns: repeat(2, 50%);
       }
 }
-@media (min-width: 768px){
+@media (min-width: 1024px){
     .listing_container {
-        display: grid;
-        grid-template-columns: repeat(3, 200px);
-        grid-gap: 148px;
-        padding: 65px;
+        grid-template-columns: repeat(3, 33%);
+        grid-gap: 5px;
       }
 }

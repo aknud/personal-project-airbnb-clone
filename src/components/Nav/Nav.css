@@ -10,7 +10,7 @@ a {
 .nav_main {
     display: flex;
     padding: 19px;
-    position: fixed;
+    /* position: fixed; */
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     width: 100%;
 }
@@ -116,9 +116,32 @@ a {
 }
 
 @media (min-width: 1024px){
+    a{
+        font-size: 1.3rem;
+    }
     #signup {
         margin-left: 650px;
-        font-size: 1.4rem;
+    }
+    #nav_newListing {
+        padding: 5px 0px 0px 1045px;
+    }
+    #nav_userdash {
+        padding: 5px 0px 0px 150px;
+    }
+    #nav_host_logout {
+        cursor: pointer;
+        padding: 5px 0px 0px 82px;
+        font-size: 1.3rem;
+    }
+    .nav_user_pic {
+        margin-left: 106px;
+    }
+
+    #nav_user_host {
+        margin: 0 10px 0 1190px;
+    }
+    #nav_user_logout {
+        margin: 0 -66px 0 0px;
     }
 }
 @media (min-width: 1440px){
@@ -126,8 +149,8 @@ a {
         margin-left: 1075px;
     }
 }
-@media (min-width: 1640px){
+/* @media (min-width: 1640px){
     #signup {
         margin-left: 1320px;
     }
-}
+} */

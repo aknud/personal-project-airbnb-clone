@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { getListings } from '../../ducks/reducer';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Listings.css';
 
 export class Listings extends React.Component {
@@ -17,15 +17,19 @@ export class Listings extends React.Component {
 		let { listings } = this.props;
 
 		let properties = listings.map((property) => {
-			console.log(333222, property.url)
+			console.log(333222, property.url);
 			return (
 				<div key={property.property_id + ' ' + Math.random()} className="listing_property_container">
 					<img src={property.img} alt="property" />
-					<h4>{property.title}</h4>
-					<h4>{property.city}</h4>
-					<h4>{property.state}</h4>
-					<h4>{property.rent}</h4>
-					<Link to={`/selectedlisting/${property.property_id}`}><button>View Listing</button></Link>
+					<div className="listing_info">
+						<h4>{property.title}</h4>
+						<h4>{property.city}</h4>
+						<h4>{property.state}</h4>
+						<h4>{property.rent}</h4>
+						<Link to={`/selectedlisting/${property.property_id}`}>
+							View Listing
+						</Link>
+					</div>
 				</div>
 			);
 		});
@@ -39,7 +43,7 @@ export class Listings extends React.Component {
 }
 const mapStateToProps = (state) => {
 	return {
-		listings: state.listings,
+		listings: state.listings
 	};
 };
 

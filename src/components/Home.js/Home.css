@@ -1,42 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Mogra');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Merriweather Sans', sans-serif;
-  text-decoration: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Merriweather Sans', sans-serif;
+	text-decoration: none;
 }
 
 .Home {
-  height: 100vh;
-  width: 100%;
-  background-image: url('./../../images/domenico-loia-274169-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
+	height: 100vh;
+	width: 100%;
+	background-image: url('./../../images/hutomo-abrianto-576212-unsplash.jpg');
+	background-size: 100% 100%;
+	background-position: center;
 }
 
 .container h1 {
-  font-family: 'Mogra', cursive;
-  color: #ffffff;
+	font-family: 'Mogra', cursive;
+  color: #75dbcd;
+  font-size: 2.3em;
 }
 
 .container {
-  width: 100%;
-  height: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	width: 100%;
+	height: 80vh;
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .home_display_listings {
-  /* display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: flex-start;
-  align-content: space-around; */
-  margin-top: 160px;
+	margin-top: 67px;
 }
-
