@@ -25,7 +25,7 @@ export class Listings extends React.Component {
 						<h4>{property.title}</h4>
 						<h4>{property.city}</h4>
 						<h4>{property.state}</h4>
-						<h4>{property.rent}</h4>
+						<h4>${property.rent} per night</h4>
 						<Link to={`/selectedlisting/${property.property_id}`}>
 							View Listing
 						</Link>

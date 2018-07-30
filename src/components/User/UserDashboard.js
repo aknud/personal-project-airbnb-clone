@@ -48,9 +48,9 @@ class UserDashboard extends Component {
 			<div className="userDashboard">
 				<Nav {...this.props} />
 				<div className="user_profile">
-					<h4>Hello, {user.first_name ? user.first_name : null}</h4>
+					<h3>Hello, {user.first_name ? user.first_name : null}</h3>
 
-					<h4>Upcoming trips</h4>
+					<h3>Upcoming trips</h3>
 					<div className="saved_listings">{mylist}</div>
 				</div>
 				<div>

@@ -37,10 +37,10 @@ class HostDashboard extends Component {
 					<div className="host_listing" key={property.property_id + ' ' + Math.random()}>
 						<h3>{property.title}</h3>
 						<img className="prop_img" src={property.img} alt={property.title} />
-
+						<h5>{property.address}</h5>
 						<h5>{property.city}</h5>
 						<h5>{property.state}</h5>
-						<h5>{property.rent}</h5>
+						<h5>${property.rent} per night</h5>
 						<button onClick={() => this.deleteListing(property.property_id)}>delete</button>
 						<Link to={`/hostdashboard/editlisting/${property.property_id}`}>
 							<button>edit</button>
@@ -52,11 +52,11 @@ class HostDashboard extends Component {
 			<div className="host_main">
 			<Nav {...this.props}/>
 				<div className="host_profile">
-					<h1>Host Dashboard</h1> <h4>Hello, {user.first_name ? user.first_name : null}</h4>
+					<h2>Host Dashboard</h2> <h3>Hello, {user.first_name ? user.first_name : null}</h3>
 				</div>
-				<div className="host_listings_render">
-					<h2>Your Listings</h2>
-					<div>{userListings}</div>
+				<div className="host_listings_main">
+					<h3>Your Listings</h3>
+					<div className="host_listings_container">{userListings}</div>
 				</div>
 			</div>
 		);
@@ -66,7 +66,6 @@ const mapStateToProps = (state) => {
 	return {
 		user: state.user,
 		listings: state.host_listings,
-		
 	};
 };
 

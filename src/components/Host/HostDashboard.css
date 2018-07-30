@@ -3,28 +3,40 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-.host_profile {
-    padding-top: 100px;
-    padding-left: 20px;
+.host_main {
+    background-color: #f4f8f2;
 }
-
-.host_listings_render {
+.host_profile {
+    padding-left: 20px;
+    color: #75dbcd;
+}
+.host_listings_main {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 30px;
     padding-top: 35px;
     text-align: center;
 }
+.host_listings_main h3 {
+    color: #75dbcd;
+}
+.host_listings_container {
+    text-align: center;
+    margin: 5px auto;
+}
 
 .host_listing {
-    border: 3px solid grey;
-    height: 367px;
-    padding: 20px;
-    margin: 20px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto;
+}
+.host_listing button {
+    background-color: #f4f8f2;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .prop_img {
-    width: 200px;
+    width: 325px;
     height: 200px;
 }

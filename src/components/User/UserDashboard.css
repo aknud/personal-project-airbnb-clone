@@ -7,29 +7,39 @@
     background-color: #F4F8F2;
 }
 .user_profile {
-    padding-top: 70px;
+    margin: 0 auto;
 }
-.user_profile h4 {
-    padding-left: 10px;
+.user_profile h3 {
+    padding-left: 12px;
+    color: #75dbcd;
 }
+
 .user_saved_listings {
-    border: 2px solid black;
-    background-color: rgb(226, 226, 226);
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 5px;
     width: 350px;
     padding: 10px;
-    margin: 10px;
     text-align: center;
 }
+
 .user_saved_listings img {
     width: 325px;
     height: 200px;
 }
 
 @media (min-width: 425px){
-    .user_saved_listings {
-        margin: 15px 38px;
-    }
-    .user_profile h4 {
+    .user_profile h3 {
         padding-left: 40px;
+    }
+}
+
+@media (min-width: 1024px){
+    .saved_listings{
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+    }
+    .user_profile h3 {
+        padding-left: 76px;
     }
 }
