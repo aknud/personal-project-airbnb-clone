@@ -48,7 +48,7 @@ class EditPhotos extends Component {
 	getSignedRequest = (file) => {
 		const fileName = 'ak1-' + file.name.replace(/\s/g, '-');
 		axios
-			.get('/sign-s3', {
+			.get('/api/sign-s3', {
 				params: {
 					'file-name': fileName,
 					'file-type': file.type
