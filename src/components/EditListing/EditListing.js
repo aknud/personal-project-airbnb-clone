@@ -87,11 +87,8 @@ class EditListing extends Component {
 		return (
 			<div className="EditListing_main">
 			<Nav {...this.props}/>
-				<div style={{paddingTop: "100px"}}>
-					<h4>Hello, {user.first_name ? user.first_name : null}</h4>
-					{user.user_pic ? <img className="avatar" src={user.user_pic} alt="user" /> : null}
-				</div>
-				<h4>UPDATE YOUR LISTING</h4>
+				
+				<h2>UPDATE YOUR LISTING</h2>
 				<div>
 					<form onSubmit={this.handleSubmit}>
 						<input type="text" value={this.state.title} onChange={this.handleChange} name="title" />

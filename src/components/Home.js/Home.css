@@ -19,6 +19,7 @@
 .container h1 {
 	font-family: 'Mogra', cursive;
   color: #75dbcd;
+  text-shadow: 1px 1px #36645e;
   font-size: 2.3em;
 }
 

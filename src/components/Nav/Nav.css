@@ -5,6 +5,7 @@
 }
 a {
     color: #75dbcd;
+    
 }
 
 .nav_main {
@@ -24,6 +25,7 @@ a {
 }
 .nav_links {
     color: #75dbcd;
+    text-shadow: 1px 1px #36645e;
     white-space: nowrap;
     padding: 10px 0px 0px 6px;
     width: 75px;
@@ -37,7 +39,8 @@ a {
     padding: 7px 0px 0px 95px;
 }
 #nav_user_logout {
-    margin: 0 27px 0 0px
+    margin: 0 27px 0 0px;
+    /* text-shadow: 1px 1px #36645e; */
 }
 #nav_user_host {
     margin: 0 10px 0 35px;
@@ -63,6 +66,7 @@ a {
     content: "\f57d";
     font-size: 35px;
     color: #75dbcd;
+    text-shadow: 1px 1px #36645e;
 }
 
 @media (min-width: 425px){

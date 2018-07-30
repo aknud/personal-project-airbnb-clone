@@ -53,6 +53,7 @@ class UserDashboard extends Component {
 					<h3>Upcoming trips</h3>
 					<div className="saved_listings">{mylist}</div>
 				</div>
+				<hr/>
 				<div>
 					<Listings />
 				</div>

@@ -30,6 +30,7 @@ export class SelectedListing extends React.Component {
 
 	render() {
 		const { listings, user, pics } = this.props;
+		console.log('user',user)
 		const id = this.props.match.params.id;
 		let selectedListing = listings
 			.filter((listing) => listing.property_id === +id)
@@ -44,7 +45,7 @@ export class SelectedListing extends React.Component {
 						<Link to="/">
 							<button>Back to Listings</button>
 						</Link>
-						{user.user_id && <button>Contact Host</button>}
+						{user.user_id && <Link to={`/contacthost/${id}`}><button>Contact Host</button></Link>}
 						{user.user_id && (
 							<Link to="/userdashboard">
 								<button onClick={() => this.saveListing(property.property_id, property.user_id)}>
@@ -65,6 +66,7 @@ export class SelectedListing extends React.Component {
 		return (
 			<div className="selectedListing_main">
 				{selectedListing}
+				<hr/>
 				<h3>Photos</h3>
 				<div className="photo_div">
 				{listingPhotos}</div>

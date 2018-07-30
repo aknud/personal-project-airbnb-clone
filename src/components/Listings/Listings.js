@@ -17,7 +17,6 @@ export class Listings extends React.Component {
 		let { listings } = this.props;
 
 		let properties = listings.map((property) => {
-			console.log(333222, property.url);
 			return (
 				<div key={property.property_id + ' ' + Math.random()} className="listing_property_container">
 					<img src={property.img} alt="property" />
