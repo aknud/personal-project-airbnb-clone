@@ -23,6 +23,7 @@ const {
     CLIENT_SECRET,
     SESSION_SECRET,
     S3_BUCKET,
+    AWS_REGION,
     FRONTEND_DOMAIN,
     PROTOCAL
 } = process.env;
@@ -43,10 +44,14 @@ app.use(mid.bypassAuthInDevelopment)
 
 
 ////////// AMAZON S3 ///////////
-aws.config.region = 'us-west-1';
+//NOTE: Look into making bucket public
+
+aws.config.region = AWS_REGION;  //NOTE: Changed this to go into the .env file.
 
 app.get('/api/sign-s3', (req, res) => {
+
     const s3 = new aws.S3();
+
     const fileName = req.query['file-name'];
     const fileType = req.query['file-type'];
     const s3Params = {
@@ -111,11 +116,7 @@ app.get('/auth/callback', async (req, res) => {
 
 });
 
-// "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10216629239983013&height=50&width=50&ext=1535315025&hash=AeStC6jb17EWIGSS"
 
-// "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10216629239983013&height=50&width=50&ext=1535314990&hash=AeQW32G2jZ_PhO8e"
-
-// user_pic:"https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10216629239983013&height=50&width=50&ext=1535315025&hash=AeStC6jb17EWIGSS"
 
 
 
@@ -142,7 +143,6 @@ app.get('/api/my-properties', ctrl.getHostListings)
 app.get('/api/photos-by-id/:id', ctrl.getPhotosById)
 app.get('/api/all-photos', ctrl.getPhotos)
 app.get('/api/get-saved-listings', ctrl.getSavedListings)
-// app.get('/api/checkloginstatus', ctrl.checkForLogin)
 app.post('/api/new-property', ctrl.create)
 app.post('/api/save-listing/:id', ctrl.saveListing)
 app.post('/api/addphoto/:id', ctrl.addPhoto)

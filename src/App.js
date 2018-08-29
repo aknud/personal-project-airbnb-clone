@@ -15,7 +15,7 @@ class App extends Component {
         {/* {authenticatedRoutes} */}
         {routes}
 
-        
+
       </div>
     );
   }

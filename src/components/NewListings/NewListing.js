@@ -87,10 +87,10 @@ class NewListing extends Component {
 		return (
 			<div>
 				<Nav {...this.props} />
-				<h4 style={{ paddingTop: '100px' }}>CREATE A NEW LISTING</h4>
 				<div className="host_profile">
 					<h4>Hello, {user.first_name ? user.first_name : null}</h4>
 				</div>
+				<h2 style={{textAlign: "center", paddingTop:"50px", paddingBottom:"20px"}}>CREATE A NEW LISTING</h2>
 				<div>
 					<form onSubmit={this.handleSubmit}>
 						<input

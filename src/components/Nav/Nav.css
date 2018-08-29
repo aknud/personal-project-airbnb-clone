@@ -5,7 +5,6 @@
 }
 a {
     color: #75dbcd;
-    
 }
 
 .nav_main {
@@ -114,7 +113,7 @@ a {
         font-size: 1.4rem;
     }
     #signup {
-        margin-left: 385px;
+        margin-left: 555px;
         font-size: 1.4rem;
     }
 }
@@ -150,7 +149,7 @@ a {
 }
 @media (min-width: 1440px){
     #signup {
-        margin-left: 1075px;
+        margin-left: 1320px;
     }
 }
 /* @media (min-width: 1640px){

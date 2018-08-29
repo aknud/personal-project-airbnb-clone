@@ -18,7 +18,6 @@ class EditListing extends Component {
 			city: list[0] ? list[0].city : '',
 			state: list[0] ? list[0].state : '',
 			zip: list[0] ? list[0].zip : '',
-			// img: list[0] ? list[0].img : '',
 			rent: list[0] ? list[0].rent : '',
 			url: []
 		};
@@ -87,7 +86,6 @@ class EditListing extends Component {
 		return (
 			<div className="EditListing_main">
 			<Nav {...this.props}/>
-				
 				<h2>UPDATE YOUR LISTING</h2>
 				<div>
 					<form onSubmit={this.handleSubmit}>
@@ -120,13 +118,6 @@ class EditListing extends Component {
 							placeholder="zip"
 							name="zip"
 						/>
-						{/* <input
-							type="text"
-							value={this.state.img}
-							onChange={this.handleChange}
-							placeholder="img"
-							name="img"
-						/> */}
 						<input
 							type="text"
 							value={this.state.rent}
