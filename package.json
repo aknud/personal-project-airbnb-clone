@@ -12,24 +12,24 @@
   },
   "main": "./server/server.js",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "0.1.0-11",
-    "aws-sdk": "^2.276.1",
+    "aws-sdk": "^2.304.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "google-maps-react": "^2.0.2",
-    "massive": "^5.1.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-dropzone": "^4.2.13",
+    "massive": "^5.2.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-dropzone": "^4.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-spinners": "^0.3.2",
+    "react-spinners": "^0.3.3",
     "redux": "^4.0.0"
   },
   "scripts": {
@@ -39,6 +39,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "cypress": "^3.0.3"
+    "cypress": "^3.1.0"
   }
 }

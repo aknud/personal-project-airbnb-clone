@@ -116,14 +116,6 @@ app.get('/auth/callback', async (req, res) => {
 
 });
 
-
-
-
-
-
-
-
-
 app.get('/api/user-data', (req, res) => {
     if(req.session.user){
         res.status(200).send(req.session.user)
