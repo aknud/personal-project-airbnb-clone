@@ -141,19 +141,33 @@ a {
     }
 
     #nav_user_host {
-        margin: 0 10px 0 1190px;
+        margin: 0 10px 0 725px;
     }
     #nav_user_logout {
         margin: 0 -66px 0 0px;
     }
 }
-@media (min-width: 1440px){
+@media (min-width: 1280px){
     #signup {
-        margin-left: 1320px;
+        margin-left: 875px;
+    }
+    #nav_user_host {
+        margin: 0 10px 0 975px;
     }
 }
-/* @media (min-width: 1640px){
+@media (min-width: 1440px){
     #signup {
-        margin-left: 1320px;
+        margin-left: 1066px;
     }
-} */
+    #nav_user_host {
+        margin: 0 10px 0 1135px;
+    }
+}
+@media (min-width: 1640px){
+    #signup {
+        margin-left: 1520px;
+    }
+    #nav_user_host {
+        margin: 0 10px 0 1615px;
+    }
+}
